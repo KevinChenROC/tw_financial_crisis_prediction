@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from calc_rate_helper import calc_log_rates
+from .calc_rate_helper import calc_log_rates
 
 
 def calc_lag_values(series, lag_n, symbol):  # return a dataframe with n+1 dimensions
@@ -21,4 +21,5 @@ def calc_lag_values(series, lag_n, symbol):  # return a dataframe with n+1 dimen
         for j in range(0, lag_n):
             df.iat[i, j] = series[i-j-1]
 
-    return df
+    # truncate the rows with NaN in columns
+    return df.dropna()
