@@ -4,12 +4,14 @@ END_DATE = "2019-04-01"
 R_KEY = "bN9aBd1PzA"
 
 # Parameters config
-STOCK_LAG_N = 5
+DAY_LAG_N = 5  # one week
+MONTH_LAG_N = 4  # one quarter
+QUARTER_N = 4
 
 # paths below are relative to the main folder tw_crisis_prediction
 RAW_DATA_PATH = "datasets/raw_data/"
 SYMBOLS_PATH = "datasets/symbols/"
 STOCK_INDX_PATH = RAW_DATA_PATH + "stock_indexes/"
-REER_PATH = RAW_DATA_PATH + "REERS/"
+REER_PATH = RAW_DATA_PATH + "REERs/"
 BOND_INDX_PATH = RAW_DATA_PATH + "bond_yield_indexes/"
 MACRO_INDTRS_PATH = RAW_DATA_PATH + "tw_macro_indicators/"
