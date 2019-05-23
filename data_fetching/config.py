@@ -4,9 +4,9 @@ END_DATE = "2019-04-01"
 R_KEY = "bN9aBd1PzA"
 
 # Parameters config
-DAY_LAG_N = 5  # one week
-MONTH_LAG_N = 4  # one quarter
-QUARTER_N = 4
+DAY_LAG_N = 10
+MONTH_LAG_N = 3
+QUARTER_N = 2
 
 # paths below are relative to the main folder tw_crisis_prediction
 RAW_DATA_PATH = "datasets/raw_data/"

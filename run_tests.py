@@ -3,3 +3,5 @@ from data_transform.util.file_extension import *
 
 assert remove_extension("hello.csv") == 'hello'
 assert remove_extension("hello.ext") == 'hello'
+assert remove_extension("hello") == 'hello'
+assert lag_values_test.df.dropna().size == lag_values_test.df.size
