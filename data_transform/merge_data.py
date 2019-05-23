@@ -6,7 +6,7 @@ import numpy as np
 
 from data_fetching import config
 from data_transform.util.calc_rate import *
-from data_transform.util.lag_values_helper import *
+from data_transform.util.lag_value import *
 from data_transform.util.file_extension import *
 
 
@@ -18,7 +18,7 @@ def get_file_names(dir_path):
 
 def get_lag_change_rates(series, lag_n, symbol, fill_freq):
     series = calc_simple_rates(series)
-    df = lag_value(series, lag_n, symbol)
+    df = calc_lag_values(series, lag_n, symbol)
 
     # back fill missing values
     df = df.asfreq(freq=fill_freq, method='bfill')

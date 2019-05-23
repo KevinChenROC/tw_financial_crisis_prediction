@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from .calc_rate_helper import calc_simple_rates
+from .calc_rate import calc_simple_rates
 
 
 def calc_lag_values(series, lag_n, symbol):  # return a dataframe with n+1 dimensions
