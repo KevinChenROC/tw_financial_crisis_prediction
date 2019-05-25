@@ -1,7 +1,7 @@
 from data_transform.tests import calc_rate_test, lag_values_test
-from data_transform.util.file_extension import *
+from data_transform.tests.stats_test import *
+from data_transform.tests.file_extension_test import *
 
-assert remove_extension("hello.csv") == 'hello'
-assert remove_extension("hello.ext") == 'hello'
-assert remove_extension("hello") == 'hello'
+run_stats_test()
+run_file_ext_tests()
 assert lag_values_test.df.dropna().size == lag_values_test.df.size
