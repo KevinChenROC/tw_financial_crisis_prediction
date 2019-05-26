@@ -8,6 +8,11 @@ DAY_LAG_N = 10
 MONTH_LAG_N = 3
 QUARTER_N = 2
 
+START_IDX_RETURN_DISTRI = 201
+MARKET_CRASH_THRESHOLD_PERCENTILE = 0.03
+PAST_N_DAYS_LIST = [5, 20]
+NEXT_N_DAYS_LIST = [3, 10]
+
 # paths below are relative to the main folder tw_crisis_prediction
 RAW_DATA_PATH = "datasets/raw_data/"
 SYMBOLS_PATH = "datasets/symbols/"
