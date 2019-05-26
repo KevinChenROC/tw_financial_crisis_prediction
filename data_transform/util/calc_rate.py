@@ -20,7 +20,3 @@ def calc_simple_rates(series):  # return a series with the same indexes.
         rates.append(rate)
 
     return pd.Series(rates, index=series.index[start_index:])
-
-
-def calc_percentage_of(nomin, denom):  # return a new series
-    return nomin/denom
