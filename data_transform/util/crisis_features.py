@@ -37,9 +37,9 @@ def crises_in_past_n_days(crisis_labels, past_n_list):  # return a new df
     return df.dropna()
 
 
-def crisis_in_next_n_days(crisis_labels):
+def crisis_in_next_n_days(crisis_labels, next_n_list):
     df = pd.DataFrame(index=crisis_labels.index)
-    for next_n in config.NEXT_N_DAYS_LIST:
+    for next_n in next_n_list:
 
         # construct empty columns
         col_label = "Crisis in next " + str(next_n) + " days"
@@ -60,7 +60,7 @@ def transform(change_rates):
     df_list.append(get_crisis_label(change_rates))  # OK
     df_list.append(crises_in_past_n_days(
         df_list[0], config.PAST_N_DAYS_LIST))
-    df_list.append(crisis_in_next_n_days(df_list[0]))  # Problem
+    df_list.append(crisis_in_next_n_days(df_list[0], config.NEXT_N_DAYS_LIST))
 
     # merge dfs in the list
     merged_df = pd.DataFrame(index=change_rates.index)
