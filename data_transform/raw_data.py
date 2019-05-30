@@ -2,10 +2,8 @@ import pandas as pd
 
 from data_transform.util.merge_data import merge_datasets
 from data_fetching import config
-from data_transform.util import crisis_features, store_data
+from data_transform.util import crisis_features
 from data_transform.util.calc_rate import calc_simple_rates
-
-# TODO Refactor by breaking down this functions
 
 
 def transform_store_raw_data(dataset_paths, val_columns, lag_configs, raw_data_path):
@@ -27,6 +25,4 @@ def transform_store_raw_data(dataset_paths, val_columns, lag_configs, raw_data_p
     normalized_df = (target_df-target_df.min()) / \
         (target_df.max()-target_df.min())
 
-    # store this DF
-    target_file_path = raw_data_path + "train_test_data.csv"
-    store_data.store_dataframe(normalized_df, 'csv', target_file_path)
+    return normalized_df

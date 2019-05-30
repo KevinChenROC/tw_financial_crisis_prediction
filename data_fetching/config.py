@@ -13,7 +13,8 @@ MARKET_CRASH_THRESHOLD_PERCENTILE = 0.03
 PAST_N_DAYS_LIST = [5, 20]
 NEXT_N_DAYS_LIST = [3, 10]
 
-# paths below are relative to the main folder tw_crisis_prediction
+# paths below are relative to the folder 'tw_crisis_prediction'
+DATASETS_PATH = 'datasets/'
 RAW_DATA_PATH = "datasets/raw_data/"
 SYMBOLS_PATH = "datasets/symbols/"
 STOCK_INDX_PATH = RAW_DATA_PATH + "stock_indexes/"

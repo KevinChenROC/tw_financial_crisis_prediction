@@ -4,3 +4,5 @@
 __pycache__
 tempCodeRunnerFile.*
 raw_data
+train_test_data.csv
+processed_data
