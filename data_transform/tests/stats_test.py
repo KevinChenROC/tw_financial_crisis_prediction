@@ -2,7 +2,7 @@ from ..util.stats import ecdf
 import numpy as np
 
 
-def run_stats_test():
+def run_tests():
     data = np.array([3, 3, 1, 4])
     assert ecdf(data, 3) == 0.75
     assert ecdf(data, 55) == 1
