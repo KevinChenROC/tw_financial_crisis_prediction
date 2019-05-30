@@ -23,7 +23,7 @@ def run_tests():
     if os.path.exists(test_path):
         os.remove(test_path)
     else:
-        print("The {file} does not exist".format(test_path))
+        print("{path} does not exist".format(path=test_path))
 
 
 run_tests()
