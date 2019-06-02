@@ -12,14 +12,19 @@ def calc_lag_values(series, lag_n, symbol):  # return a dataframe with n+1 dimen
             start_index = i + lag_n
             break
 
-    # construct a new dataframe for lag values, starting from series[start_index]
+    # Add (n+1)th date to date index
+    date_idx = series.index
+    date_idx = date_idx[:-1].append(pd.date_range(
+        freq=date_idx.inferred_freq, start=date_idx[-1], periods=2))
+
+    # construct a dataframe for lag values with new date index
     cols = ["lag{0}_{1}".format(i, symbol) for i in range(1, lag_n+1)]
-    df = pd.DataFrame(index=series.index, columns=cols)
+    target_df = pd.DataFrame(index=date_idx, columns=cols)
 
     # construct lag values
-    for i in range(start_index, len(series.index)):
+    for i in range(start_index, len(target_df.index)):
         for j in range(0, lag_n):
-            df.iat[i, j] = series[i-j-1]
+            target_df.iat[i, j] = series[i-j-1]
 
     # truncate the rows with NaN in columns
-    return df.dropna()
+    return target_df.dropna()

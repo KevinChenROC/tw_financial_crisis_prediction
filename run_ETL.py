@@ -1,4 +1,4 @@
-from data_transform.raw_data import transform_store_raw_data
+from data_transform.raw_data import transform_raw_data
 from data_fetching.data_downloader import download_raw_data
 from data_transform.util.store_data import store_dataframe
 from data_fetching import config
@@ -15,7 +15,7 @@ def start():
     val_columns = ['Close'] + ['Value'] * 3
     lag_configs = [config.DAY_LAG_N] + [config.MONTH_LAG_N]*3
 
-    df_transformed = transform_store_raw_data(dataset_paths, val_columns,
+    df_transformed = transform_raw_data(dataset_paths, val_columns,
                                               lag_configs, config.RAW_DATA_PATH)
 
     # store this DF
