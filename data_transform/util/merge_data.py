@@ -26,7 +26,7 @@ def get_lag_change_rates(series, lag_n, symbol, fill_freq):
 
 
 # Merge different datas
-def merge_data(data_dir, value_col, lag_n, fill_freq='1D'):
+def merge_data_in_folder(data_dir, value_col, lag_n, fill_freq='1D'):
     time_indexes = pd.date_range(config.START_DATE, config.END_DATE, freq='1D')
     target_df = pd.DataFrame(index=time_indexes)
 
@@ -50,7 +50,7 @@ def merge_datasets(paths, value_columns, lag_configs):
     # return pandas.datafraem
     merge_df = pd.DataFrame()
     for i in range(0, len(paths)):
-        df = merge_data(
+        df = merge_data_in_folder(
             data_dir=paths[i], value_col=value_columns[i], lag_n=lag_configs[i])
 
         if(merge_df.empty):

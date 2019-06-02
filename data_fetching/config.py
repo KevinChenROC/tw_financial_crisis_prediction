@@ -18,6 +18,6 @@ DATASETS_PATH = 'datasets/'
 RAW_DATA_PATH = "datasets/raw_data/"
 SYMBOLS_PATH = "datasets/symbols/"
 STOCK_INDX_PATH = RAW_DATA_PATH + "stock_indexes/"
-REER_PATH = RAW_DATA_PATH + "REERs/"
+FOREX_PATH = RAW_DATA_PATH + "forex/"
 BOND_INDX_PATH = RAW_DATA_PATH + "bond_yield_indexes/"
 MACRO_INDTRS_PATH = RAW_DATA_PATH + "macro_indicators_monthly/"

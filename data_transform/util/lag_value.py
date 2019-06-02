@@ -15,7 +15,7 @@ def calc_lag_values(series, lag_n, symbol):  # return a dataframe with n+1 dimen
     # Add (n+1)th date to date index
     date_idx = series.index
     date_idx = date_idx[:-1].append(pd.date_range(
-        freq=date_idx.inferred_freq, start=date_idx[-1], periods=2))
+        freq=(date_idx.freq or date_idx.inferred_freq), start=date_idx[-1], periods=2))
 
     # construct a dataframe for lag values with new date index
     cols = ["lag{0}_{1}".format(i, symbol) for i in range(1, lag_n+1)]
