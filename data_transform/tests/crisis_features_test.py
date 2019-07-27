@@ -47,7 +47,7 @@ def run_tests():
     tw_stock = pd.read_csv("datasets/raw_data/stock_indexes/^TWII.csv",
                            header=0, parse_dates=[0], index_col=0)
     crisis_labels = crisis_features.get_crisis_label(
-        calc_rate.calc_simple_rates(tw_stock.iloc[0:int(len(tw_stock.index) / 4)]['Close']))
+        calc_rate.calc_simple_rates(tw_stock.iloc[0:int(len(tw_stock.index) / 4)]['Close']), config.RETURN_DISTR_WINDOW, config.MARKET_CRASH_THRESHOLD)
 
     # test crises in past n days & crisis in next n days
     run_crises_in_past_test(crisis_labels)

@@ -4,7 +4,6 @@ from os.path import isfile, join
 import pandas as pd
 import numpy as np
 
-import config
 from data_transform.util.calc_rate import *
 from data_transform.util.file_extension import *
 
@@ -24,8 +23,8 @@ def get_change_rates(series, symbol, fill_freq):
 
 
 # Merge different datas
-def merge_data_in_folder(data_dir, value_col, fill_freq='1D'):
-    time_indexes = pd.date_range(config.START_DATE, config.END_DATE, freq='1D')
+def merge_data_in_folder(data_dir, value_col, start_date, end_date, fill_freq='1D'):
+    time_indexes = pd.date_range(start_date, end_date, freq='1D')
     target_df = pd.DataFrame(index=time_indexes)
 
     for f in get_file_names(data_dir):
@@ -43,13 +42,13 @@ def merge_data_in_folder(data_dir, value_col, fill_freq='1D'):
 
 
 # Merge sets of datas
-def merge_datasets(paths, value_columns):
+def merge_datasets(paths, value_columns, start_date, end_date):
     # param types: list, list, list
     # return pandas.datafraem
     merge_df = pd.DataFrame()
     for i in range(0, len(paths)):
         df = merge_data_in_folder(
-            data_dir=paths[i], value_col=value_columns[i])
+            paths[i], value_columns[i],  start_date, end_date)
 
         if(merge_df.empty):
             merge_df = df

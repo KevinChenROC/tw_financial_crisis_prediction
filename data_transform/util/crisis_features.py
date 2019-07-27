@@ -1,20 +1,19 @@
 import pandas as pd
 import numpy as np
 
-import config
 from .calc_rate import calc_simple_rates
 from .stats import ecdf
 
 
-def get_crisis_label(change_rates):  # return a new df
+def get_crisis_label(change_rates, return_distr_window, market_crash_threshold):  # return a new df
     change_rates = change_rates.dropna()
 
-    start_idx = config.START_IDX_RETURN_DISTRI
+    start_idx = return_distr_window
     df = pd.DataFrame(index=change_rates.index, columns=['Crisis'])
 
     for i in range(start_idx, change_rates.size):
         percentile = ecdf(change_rates[:i].to_numpy(), change_rates[i].item())
-        if(percentile < config.MARKET_CRASH_THRESHOLD_PERCENTILE):
+        if(percentile < market_crash_threshold):
             df.at[df.index[i], 'Crisis'] = 1
         else:
             df.at[df.index[i], 'Crisis'] = 0
@@ -54,13 +53,14 @@ def crisis_in_next_n_days(crisis_labels, next_n_list):
     return df.dropna()
 
 
-def transform(change_rates):
+def transform(change_rates, past_n_days_list, next_n_days_list, return_distr_window, market_crash_threshold):
     df_list = []
 
-    df_list.append(get_crisis_label(change_rates))  # OK
+    df_list.append(get_crisis_label(
+        change_rates, return_distr_window, market_crash_threshold))
     df_list.append(crises_in_past_n_days(
-        df_list[0], config.PAST_N_DAYS_LIST))
-    df_list.append(crisis_in_next_n_days(df_list[0], config.NEXT_N_DAYS_LIST))
+        df_list[0], past_n_days_list))
+    df_list.append(crisis_in_next_n_days(df_list[0], next_n_days_list))
 
     # merge dfs in the list
     merged_df = pd.DataFrame(index=change_rates.index)
