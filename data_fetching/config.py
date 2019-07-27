@@ -11,7 +11,7 @@ QUARTER_N = 2
 START_IDX_RETURN_DISTRI = 201
 MARKET_CRASH_THRESHOLD_PERCENTILE = 0.03
 PAST_N_DAYS_LIST = [5, 20]
-NEXT_N_DAYS_LIST = [3, 10]
+NEXT_N_DAYS_LIST = [10]
 
 # paths below are relative to the folder 'tw_crisis_prediction'
 DATASETS_PATH = 'datasets/'
