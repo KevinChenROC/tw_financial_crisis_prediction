@@ -5,14 +5,14 @@ import config
 from data_transform.util.file_extension import remove_extension
 
 
-def start(symbols_path, raw_data_path, dataset_paths, val_columns, lag_configs, target_file_path):
+def start(symbols_path, raw_data_path, dataset_paths, val_columns, target_file_path):
     # download raw data
     download_raw_data(symbols_path, raw_data_path)
 
     # transform raw data into a train test dataset
     print("\n Transform and store raw data")
-    df_transformed = get_train_data(dataset_paths, val_columns,
-                                    lag_configs, config.RAW_DATA_PATH)
+    df_transformed = get_train_data(
+        dataset_paths, val_columns, config.RAW_DATA_PATH)
 
     # store this DF
     store_dataframe(df_transformed, 'csv', target_file_path)
@@ -23,7 +23,6 @@ def start(symbols_path, raw_data_path, dataset_paths, val_columns, lag_configs, 
 dataset_paths = [config.STOCK_INDX_PATH, config.FOREX_PATH] + [config.BOND_INDX_PATH,
                                                                config.MACRO_INDTRS_PATH]
 val_columns = ['Close']*2 + ['Value'] * 2
-lag_configs = [config.DAY_LAG_N]*2 + [config.MONTH_LAG_N]*2
 
 start(config.SYMBOLS_PATH, config.RAW_DATA_PATH, dataset_paths,
-      val_columns, lag_configs, target_file_path=config.DATASETS_PATH+"train_test_data.csv")
+      val_columns, target_file_path=config.DATASETS_PATH+"train_test_data.csv")

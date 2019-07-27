@@ -6,9 +6,9 @@ from data_transform.util import crisis_features
 from data_transform.util.calc_rate import calc_simple_rates
 
 
-def get_train_data(dataset_paths, val_columns, lag_configs, raw_data_path):
+def get_train_data(dataset_paths, val_columns, raw_data_path):
     # Merge all datasets into one big DF
-    target_df = merge_datasets(dataset_paths, val_columns, lag_configs)
+    target_df = merge_datasets(dataset_paths, val_columns)
 
     # Get crisis-related features
     tw_stock = pd.read_csv("datasets/raw_data/stock_indexes/^TWII.csv",

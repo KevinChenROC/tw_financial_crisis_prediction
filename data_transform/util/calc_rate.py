@@ -19,4 +19,4 @@ def calc_simple_rates(series):  # return a series with the same indexes.
             rate = series[i]/series[i-1] - 1
         rates.append(rate)
 
-    return pd.Series(rates, index=series.index[start_index:])
+    return pd.Series(rates, index=series.index[start_index:]).dropna()

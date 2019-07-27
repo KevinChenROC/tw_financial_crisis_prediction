@@ -6,7 +6,6 @@ import numpy as np
 
 import config
 from data_transform.util.calc_rate import *
-from data_transform.util.lag_value import *
 from data_transform.util.file_extension import *
 
 
@@ -16,17 +15,16 @@ def get_file_names(dir_path):
     return file_names
 
 
-def get_lag_change_rates(series, lag_n, symbol, fill_freq):
+def get_change_rates(series, symbol, fill_freq):
     series = calc_simple_rates(series)
-    df = calc_lag_values(series, lag_n, symbol)
 
     # back fill missing values
-    df = df.asfreq(freq=fill_freq, method='bfill')
-    return df
+    series = series.asfreq(freq=fill_freq, method='bfill')
+    return series.to_frame(name=symbol)
 
 
 # Merge different datas
-def merge_data_in_folder(data_dir, value_col, lag_n, fill_freq='1D'):
+def merge_data_in_folder(data_dir, value_col, fill_freq='1D'):
     time_indexes = pd.date_range(config.START_DATE, config.END_DATE, freq='1D')
     target_df = pd.DataFrame(index=time_indexes)
 
@@ -35,8 +33,8 @@ def merge_data_in_folder(data_dir, value_col, lag_n, fill_freq='1D'):
                          header=0, parse_dates=[0], index_col=0)
 
         # transform data
-        df = get_lag_change_rates(
-            df[value_col], lag_n, remove_extension(f), fill_freq)
+        df = get_change_rates(
+            df[value_col], remove_extension(f), fill_freq)
 
         # merge dataframes
         target_df = target_df.join(df, how="inner")
@@ -45,13 +43,13 @@ def merge_data_in_folder(data_dir, value_col, lag_n, fill_freq='1D'):
 
 
 # Merge sets of datas
-def merge_datasets(paths, value_columns, lag_configs):
+def merge_datasets(paths, value_columns):
     # param types: list, list, list
     # return pandas.datafraem
     merge_df = pd.DataFrame()
     for i in range(0, len(paths)):
         df = merge_data_in_folder(
-            data_dir=paths[i], value_col=value_columns[i], lag_n=lag_configs[i])
+            data_dir=paths[i], value_col=value_columns[i])
 
         if(merge_df.empty):
             merge_df = df
