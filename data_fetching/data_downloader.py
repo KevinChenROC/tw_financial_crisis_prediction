@@ -7,8 +7,8 @@ from .utils.url_maker import make_url_stock_ai
 from .utils.download_helper import download_file
 
 
-def download_raw_data(symbols_folder_path, raw_data_folder_path):
-    # iterate through all symbols csv
+def download_raw_data(symbols_folder_path, raw_data_folder_path, data_start_date, data_end_date, r_key):
+    # iterate through all csvs of symbols
     symbols_file_paths = [f for f in os.listdir(
         symbols_folder_path) if isfile(join(symbols_folder_path, f))]
 
@@ -26,7 +26,8 @@ def download_raw_data(symbols_folder_path, raw_data_folder_path):
             print(OSError)
 
         for symbol in symbols.loc[:, 'symbol']:
-
             # Download file to that folder
-            download_file(make_url_stock_ai(symbol),
-                          target_folder + symbol + ".csv")
+            download_file(
+                make_url_stock_ai(symbol, data_start_date,
+                                  data_end_date, r_key),
+                target_folder + symbol + ".csv")

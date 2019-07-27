@@ -1,6 +1,3 @@
-from config import *
-
-
-def make_url_stock_ai(symbol):
+def make_url_stock_ai(symbol, data_start_date, data_end_date, r_key):
     return "https://stock-ai.com/ddl?s=" + symbol+"&r=" + \
-        R_KEY + "&d1=" + START_DATE + "&d2=" + END_DATE
+        r_key + "&d1=" + data_start_date + "&d2=" + data_end_date

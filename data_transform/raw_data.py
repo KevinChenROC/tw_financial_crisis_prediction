@@ -1,7 +1,6 @@
 import pandas as pd
 
 from data_transform.util.merge_data import merge_datasets
-import config
 from data_transform.util import crisis_features
 from data_transform.util.calc_rate import calc_simple_rates
 
