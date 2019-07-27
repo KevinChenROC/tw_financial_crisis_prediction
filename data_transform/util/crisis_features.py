@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from data_fetching import config
+import config
 from .calc_rate import calc_simple_rates
 from .stats import ecdf
 

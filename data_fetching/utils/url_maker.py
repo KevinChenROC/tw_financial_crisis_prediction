@@ -1,4 +1,4 @@
-from ..config import *
+from config import *
 
 
 def make_url_stock_ai(symbol):

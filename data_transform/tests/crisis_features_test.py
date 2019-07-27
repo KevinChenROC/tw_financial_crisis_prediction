@@ -1,6 +1,6 @@
 import pandas as pd
 
-from data_fetching import config
+import config
 from ..util import crisis_features, calc_rate
 
 

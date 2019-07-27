@@ -3,7 +3,7 @@ import numpy as np
 
 from ..util.lag_value import calc_lag_values
 from ..util.calc_rate import calc_simple_rates
-from data_fetching import config
+import config
 
 
 def test_calc_lag_values(change_rates, symbol, lag_n):

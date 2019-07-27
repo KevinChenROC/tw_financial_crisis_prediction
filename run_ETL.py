@@ -1,7 +1,7 @@
 from data_transform.raw_data import get_train_data
 from data_fetching.data_downloader import download_raw_data
 from data_transform.util.store_data import store_dataframe
-from data_fetching import config
+import config
 from data_transform.util.file_extension import remove_extension
 
 

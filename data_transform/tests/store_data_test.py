@@ -4,7 +4,6 @@ import pandas as pd
 from pandas.util.testing import assert_frame_equal
 
 from ..util.store_data import store_dataframe
-from data_fetching import config
 
 
 def run_tests():

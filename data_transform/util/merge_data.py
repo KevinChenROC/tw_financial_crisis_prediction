@@ -4,7 +4,7 @@ from os.path import isfile, join
 import pandas as pd
 import numpy as np
 
-from data_fetching import config
+import config
 from data_transform.util.calc_rate import *
 from data_transform.util.lag_value import *
 from data_transform.util.file_extension import *
