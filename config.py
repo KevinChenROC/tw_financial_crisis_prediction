@@ -16,3 +16,5 @@ STOCK_INDX_PATH = RAW_DATA_PATH + "stock_indexes/"
 FOREX_PATH = RAW_DATA_PATH + "forex/"
 BOND_INDX_PATH = RAW_DATA_PATH + "bond_yield_indexes/"
 MACRO_INDTRS_PATH = RAW_DATA_PATH + "macro_indicators_monthly/"
+
+DATA_FOR_MODELS_PATH = DATASETS_PATH + "data_for_models/"
