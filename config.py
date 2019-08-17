@@ -1,6 +1,8 @@
+import datetime
+
 # Stock ai config
 START_DATE = "1996-01-01"
-END_DATE = "2019-04-01"
+END_DATE = str(datetime.date.today())
 R_KEY = "bN9aBd1PzA"
 
 RETURN_DISTR_WINDOW = 201

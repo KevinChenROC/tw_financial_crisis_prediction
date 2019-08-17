@@ -21,6 +21,8 @@ if os.path.isfile(data_to_store_path):
     print(data_to_store_path + "already exists.")
 else:
 
+    print("Create " +
+          data_to_store_path)
     # remove folder recursively
     folder_list = [f for f in os.listdir(RAW_DATA_PATH)]
     for f in folder_list:
