@@ -10,8 +10,8 @@ MARKET_CRASH_THRESHOLD = 0.03
 
 # paths below are relative to the folder 'tw_crisis_prediction'
 DATASETS_PATH = 'datasets/'
-RAW_DATA_PATH = "datasets/raw_data/"
-SYMBOLS_PATH = "datasets/symbols/"
+RAW_DATA_PATH = DATASETS_PATH+"raw_data/"
+SYMBOLS_PATH = DATASETS_PATH+"symbols/"
 
 # paths for raw data folders
 STOCK_INDX_PATH = RAW_DATA_PATH + "stock_indexes/"
@@ -21,4 +21,5 @@ MACRO_INDTRS_PATH = RAW_DATA_PATH + "macro_indicators_monthly/"
 BISR_PATH = RAW_DATA_PATH + "bisr/"
 
 # path for data to train and predict on
-DATA_FOR_MODELS_PATH = DATASETS_PATH + "data_for_models/"
+LATEST_DATA_FOR_MODEL_PATH = DATASETS_PATH + "data_for_models/" + \
+    "dataset_" + START_DATE + "_" + END_DATE + ".csv"

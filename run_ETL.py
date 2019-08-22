@@ -13,12 +13,9 @@ raw_dataset_paths = [STOCK_INDX_PATH, FOREX_PATH] + [BOND_INDX_PATH,
 # value columns for selecting close prices for each category of data
 val_columns = ['Close']*2 + ['Value'] * 3
 
-data_to_store_path = DATA_FOR_MODELS_PATH + \
-    "dataset_" + START_DATE + "_" + END_DATE + ".csv"
-
-if not os.path.isfile(data_to_store_path):
+if not os.path.isfile(LATEST_DATA_FOR_MODEL_PATH):
     print("Preparing to create new " +
-          data_to_store_path)
+          LATEST_DATA_FOR_MODEL_PATH)
     # remove folder recursively
     print("Remove all raw data...")
     folder_list = [f for f in os.listdir(RAW_DATA_PATH)]
@@ -37,6 +34,6 @@ assert((len(df_transformed[df_transformed.Crisis == 1]) +
         len(df_transformed[df_transformed.Crisis == 0])) == len(df_transformed))
 
 # store this DF
-store_dataframe(df_transformed, 'csv', data_to_store_path)
+store_dataframe(df_transformed, 'csv', LATEST_DATA_FOR_MODEL_PATH)
 
 print("ETL finished")

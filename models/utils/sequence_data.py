@@ -55,3 +55,12 @@ def generator_to_samples_and_targets(generator, steps):
         Y.append(targets)
 
     return np.concatenate(X, axis=0), np.concatenate(Y, axis=0)
+
+
+def generate_samples_from_data(data, lookback, step, rows):
+    samples = np.zeros((len(rows), lookback // step, (data.shape[-1])))
+
+    for j, row in enumerate(rows):
+        indices = range(row - lookback + 1, row + 1, step)
+        samples[j] = data[indices]
+    return samples
