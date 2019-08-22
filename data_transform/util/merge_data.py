@@ -22,8 +22,12 @@ def get_change_rates(series, symbol, fill_freq):
     return series.to_frame(name=symbol)
 
 
-# Merge different datas
+# Merge datas in a folder in raw data
 def merge_data_in_folder(data_dir, value_col, start_date, end_date, fill_freq='1D'):
+    """
+    return: dataframe with missing values forward filled
+    """
+
     time_indexes = pd.date_range(start_date, end_date, freq='1D')
     target_df = pd.DataFrame(index=time_indexes)
 
@@ -35,16 +39,20 @@ def merge_data_in_folder(data_dir, value_col, start_date, end_date, fill_freq='1
         df = get_change_rates(
             df[value_col], remove_extension(f), fill_freq)
 
-        # merge dataframes
-        target_df = target_df.join(df, how="inner")
+        # merge dataframes. Do left join then ffill
+        target_df = target_df.join(df, how="left").fillna(method='ffill')
 
-    return target_df
+    return target_df.dropna()
 
 
-# Merge sets of datas
+# Merge datasets from different folders
 def merge_datasets(paths, value_columns, start_date, end_date):
-    # param types: list, list, list
-    # return pandas.datafraem
+    """
+
+    param types: list, list, list
+    return pandas.datafraem
+
+    """
     merge_df = pd.DataFrame()
     for i in range(0, len(paths)):
         df = merge_data_in_folder(
