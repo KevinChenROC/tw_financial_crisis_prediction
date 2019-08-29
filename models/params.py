@@ -2,7 +2,7 @@
 BATCH_SIZE = 64
 
 # params for generator
-DELAY = 10  # delay is 0 because the target is "crisis in 'next' N days"
+DELAY = 10
 STEP = 1  # 1 timestep = 1 day
 LOOKBACK = 15
 
