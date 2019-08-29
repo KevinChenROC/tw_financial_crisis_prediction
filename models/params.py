@@ -11,5 +11,8 @@ TRAIN_RATIO = 0.7
 VAL_RATIO = 0.15
 
 # For daily prediction
-BEST_MODEL_PATH = './best_model.h5'
 LAST_N_SEQUENCE = 3
+
+BEST_MODELS_PATH = './best_models/'
+BEST_FC_MODEL_PATH = BEST_MODELS_PATH + 'fc_model.h5'
+BEST_LSTM_MODEL_PATH = BEST_MODELS_PATH + 'LSTM_model.h5'
