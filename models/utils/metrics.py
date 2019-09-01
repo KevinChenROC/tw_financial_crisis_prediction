@@ -14,3 +14,10 @@ def print_report_for_binary_classfier(y_true, y_pred):
     print('matthews_corrcoef: %f' % matthews_corrcoef(y_true, y_pred))
     print('\nConfusion matrix:')
     print(confusion_matrix(y_true, y_pred, labels=[0, 1]))
+
+
+def print_predictions(predictions, time_indexes, last_n_sequence):
+    for i in range(len(predictions)):
+        print('\n'+'*'*20)
+        print("Probability of crisis in next  from {0} is {1}".format(
+            time_indexes[i-last_n_sequence], predictions[i]))
