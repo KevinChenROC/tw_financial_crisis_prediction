@@ -13,11 +13,17 @@ from models import params
 from models.utils.sequence_data import data_to_sequences
 from models.utils.metrics import print_predictions
 
-# load model and prepare up-to_date data
+# models for prediction
+model_paths = ["models/"+params.BEST_FC_MODEL_PATH,
+               "models/"+params.BEST_LSTM_MODEL_PATH]
+
 dataset = pd.read_csv(config.LATEST_DATA_FOR_MODEL_PATH,
                       header=0, parse_dates=[0], index_col=0)
 
-model = load_model("models/"+params.BEST_FC_MODEL_PATH)
+# Collect a list of models
+models = []
+for model_path in model_paths:
+    models.append(load_model(model_path))
 
 sequences = data_to_sequences(dataset.to_numpy(),
                               params.LOOKBACK,
@@ -27,6 +33,9 @@ sequences = data_to_sequences(dataset.to_numpy(),
 assert(np.all(dataset[-params.LAST_N_SEQUENCE:].to_numpy()
               == sequences[-1][-params.LAST_N_SEQUENCE:]))
 
+predictions = np.zeros((sequences.shape[0], 1))
 
-predictions = model.predict(sequences)
+for model in models:
+    predictions = predictions + (model.predict(sequences) / len(models))
+
 print_predictions(predictions, dataset.index, params.LAST_N_SEQUENCE)
