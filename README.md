@@ -1,9 +1,8 @@
 # Description
-An early warning system that automatically collect economic indicators and predicting the probabilities of stock market crashes in 10 or 20 days, with deep learning technique. For more infomation, refer to [this poster](https://drive.google.com/file/d/1GyMbHnQ0LecvTr5gDMChRze2Nxq46Og7/view?usp=sharing).
+An early warning system that automatically collect economic indicators and predicting the probabilities of stock market crashes in 10 or 20 days, with deep learning technique. For more infomation, refer to [this poster](https://drive.google.com/file/d/1d_HkMM1mIwgtfuTdVuMzMiwxkCzgA_Lw/view?usp=sharing).
 
 ## System Architecture
-Refer to [this poster](https://drive.google.com/file/d/1GyMbHnQ0LecvTr5gDMChRze2Nxq46Og7/view?usp=sharing)
-
+Refer to [this poster](https://drive.google.com/file/d/1d_HkMM1mIwgtfuTdVuMzMiwxkCzgA_Lw/view?usp=sharing)
 ## Motivation
 A severe finanicial crisis can undermine the economy, leading to social and economic problems such as high unemployment rate, economic recession or depression, etc., improving the predictive performance of an EWS makes the system more valuable and reliable to assist experts to make judgement and take preventive actions. 
 
