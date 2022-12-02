@@ -1,5 +1,5 @@
 # Description
-An early warning system that automatically collect economic indicators and predicting the probabilities of stock market crashes in 10 or 20 days, with deep learning technique
+An early warning system that automatically collect economic indicators and predicting the probabilities of stock market crashes in 10 or 20 days, with deep learning technique. For more infomation, refer to [this poster](https://drive.google.com/file/d/1GyMbHnQ0LecvTr5gDMChRze2Nxq46Og7/view?usp=sharing).
 
 ## System Architecture
 Refer to [this poster](https://drive.google.com/file/d/1GyMbHnQ0LecvTr5gDMChRze2Nxq46Og7/view?usp=sharing)
